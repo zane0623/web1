@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGCSE 数学课程 - 学习资源</title>
+    <style>
+        :root {
+            --primary-color: #0076ff;
+            --text-color: #333;
+            --bg-color: #fff;
+            --header-height: 60px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .nav {
+            margin-left: auto;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .nav a:hover {
+            opacity: 0.8;
+        }
+
+        .main {
+            margin-top: var(--header-height);
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .course-header {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .course-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .course-header p {
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .module-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .topic-list {
+            list-style: none;
+        }
+
+        .topic-list li {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .topic-list li:before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .resources {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .resources h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .resource-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background: #0056cc;
+        }
+
+        .video-section {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .video-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 0 1rem;
+            }
+
+            .nav a {
+                margin-left: 1rem;
+            }
+
+            .course-header h2 {
+                font-size: 2rem;
+            }
+
+            .module-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>IGCSE 学习资源</h1>
+        <nav class="nav">
+            <a href="index.html">首页</a>
+            <a href="index.html#subjects">课程</a>
+            <a href="#math-content">数学</a>
+            <a href="index.html#resources">资源</a>
+            <a href="index.html#about">关于</a>
+        </nav>
+    </header>
+
+    <main class="main" id="math-content">
+        <section class="course-header">
+            <h2>数学 (Mathematics)</h2>
+            <p>IGCSE数学课程旨在培养学生的数学思维和问题解决能力，涵盖数与代数、几何与三角、统计与概率、函数与图像等核心内容。通过系统的学习，帮助学生掌握关键数学概念和应用技能。</p>
+        </section>
+
+        <div class="module-grid">
+            <div class="module-card" id="algebra">
+                <h3>数与代数</h3>
+                <ul class="topic-list">
+                    <li>整数、分数与小数运算</li>
+                    <li>指数与科学计数法</li>
+                    <li>代数式的化简与因式分解</li>
+                    <li>一元二次方程</li>
+                    <li>数列与级数</li>
+                    <li>集合与逻辑</li>
+                </ul>
+                <div class="video-section">
+                    <h4>相关视频教程</h4>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/bZFnF-GFGsY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card" id="geometry">
+                <h3>几何与三角</h3>
+                <ul class="topic-list">
+                    <li>平面几何与空间几何</li>
+                    <li>相似与全等</li>
+                    <li>三角函数与三角恒等式</li>
+                    <li>向量与矩阵</li>
+                    <li>圆的性质</li>
+                    <li>坐标几何</li>
+                </ul>
+            </div>
+
+            <div class="module-card" id="statistics">
+                <h3>统计与概率</h3>
+                <ul class="topic-list">
+                    <li>数据收集与表示</li>
+                    <li>中心趋势与离散趋势</li>
+                    <li>概率基础</li>
+                    <li>条件概率</li>
+                    <li>排列与组合</li>
+                    <li>统计图表分析</li>
+                </ul>
+            </div>
+
+            <div class="module-card" id="functions">
+                <h3>函数与图像</h3>
+                <ul class="topic-list">
+                    <li>函数的概念与性质</li>
+                    <li>线性函数与二次函数</li>
+                    <li>指数函数与对数函数</li>
+                    <li>函数图像的变换</li>
+                    <li>复合函数与反函数</li>
+                    <li>函数应用</li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="resources">
+            <h3>学习资源</h3>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>在线练习题库</h4>
+                    <p>包含数与代数、几何与三角、统计与概率等各类练习题和IGCSE历年真题，配备详细解析和答题技巧指导。</p>
+                    <a href="/resources/math/practice" class="btn">开始练习</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>视频课程</h4>
+                    <p>由IGCSE资深教师录制的系列课程，涵盖所有重难点知识，包含互动练习和实时答疑功能。</p>
+                    <a href="/resources/math/videos" class="btn">观看课程</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>知识点总结</h4>
+                    <p>精心制作的思维导图和知识点归纳，按考纲要求整理，配有典型例题和解题方法。</p>
+                    <a href="/resources/math/summary" class="btn">查看总结</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>模拟测试</h4>
+                    <p>完全按照IGCSE考试标准设计的模拟试题，提供计时功能和详细的评分反馈，帮助掌握考试技巧。</p>
+                    <a href="/resources/math/mock-exam" class="btn">参加测试</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2024 IGCSE 学习资源. All rights reserved.</p>
+    </footer>
+</body>
+</html>

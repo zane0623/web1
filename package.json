@@ -1,0 +1,16 @@
+{
+  "name": "igcse-web",
+  "version": "1.0.0",
+  "description": "IGCSE学习资源网站",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve -s .",
+    "build": "echo 'No build step required for static site'"
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
