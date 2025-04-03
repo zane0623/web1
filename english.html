@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语课程 - IGCSE学习资源</title>
+    <style>
+        :root {
+            --primary-color: #4F46E5;
+            --primary-hover: #4338CA;
+            --text-color: #1F2937;
+            --bg-color: #F9FAFB;
+            --card-bg: #FFFFFF;
+            --header-height: 70px;
+            --border-radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), #818CF8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav {
+            margin-left: auto;
+        }
+
+        .nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav a:hover {
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+        }
+
+        .main {
+            margin-top: var(--header-height);
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(129, 140, 248, 0.1));
+            border-radius: var(--border-radius);
+            margin-bottom: 4rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), #818CF8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .module-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+        }
+
+        .module-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .module-content {
+            margin-bottom: 1.5rem;
+        }
+
+        .key-points {
+            background: rgba(79, 70, 229, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .key-points h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .key-points ul {
+            list-style: none;
+        }
+
+        .key-points li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .key-points li:before {
+            content: "→";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .practice-section {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .practice-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .practice-button:hover {
+            background: var(--primary-hover);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>IGCSE 学习资源</h1>
+        <nav class="nav">
+            <a href="index.html">首页</a>
+            <a href="#">课程</a>
+            <a href="#">资源</a>
+            <a href="#">关于</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <h2>英语课程详情</h2>
+            <p>全面提升你的英语语言能力，为IGCSE考试做好充分准备</p>
+        </section>
+
+        <div class="module-grid">
+            <div class="module-card">
+                <h3>阅读理解与分析</h3>
+                <div class="module-content">
+                    <p>培养深度阅读能力，掌握文本分析技巧，提高理解和评价能力。</p>
+                    <div class="key-points">
+                        <h4>重点内容：</h4>
+                        <ul>
+                            <li>主旨大意提取</li>
+                            <li>细节信息理解</li>
+                            <li>上下文推理</li>
+                            <li>作者态度分析</li>
+                            <li>文章结构解析</li>
+                        </ul>
+                    </div>
+                    <div class="practice-section">
+                        <a href="#" class="practice-button">开始练习</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <h3>写作技巧与表达</h3>
+                <div class="module-content">
+                    <p>学习多样化的写作技巧，提高书面表达能力，掌握不同文体的写作要求。</p>
+                    <div class="key-points">
+                        <h4>重点内容：</h4>
+                        <ul>
+                            <li>议论文写作</li>
+                            <li>描述性写作</li>
+                            <li>故事创作</li>
+                            <li>书信与报告</li>
+                            <li>语言组织与衔接</li>
+                        </ul>
+                    </div>
+                    <div class="practice-section">
+                        <a href="#" class="practice-button">开始练习</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <h3>口语与听力训练</h3>
+                <div class="module-content">
+                    <p>提升口语表达和听力理解能力，培养地道的英语交际能力。</p>
+                    <div class="key-points">
+                        <h4>重点内容：</h4>
+                        <ul>
+                            <li>发音与语调</li>
+                            <li>口语表达技巧</li>
+                            <li>听力理解策略</li>
+                            <li>情景对话练习</li>
+                            <li>演讲与展示</li>
+                        </ul>
+                    </div>
+                    <div class="practice-section">
+                        <a href="#" class="practice-button">开始练习</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <h3>文学作品赏析</h3>
+                <div class="module-content">
+                    <p>深入解读经典文学作品，提高文学鉴赏能力和批判性思维。</p>
+                    <div class="key-points">
+                        <h4>重点内容：</h4>
+                        <ul>
+                            <li>小说分析</li>
+                            <li>诗歌赏析</li>
+                            <li>戏剧研究</li>
+                            <li>文学手法</li>
+                            <li>主题探讨</li>
+                        </ul>
+                    </div>
+                    <div class="practice-section">
+                        <a href="#" class="practice-button">开始练习</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 IGCSE学习资源. 保留所有权利。</p>
+    </footer>
+</body>
+</html>
