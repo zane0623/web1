@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟考试 - IGCSE学习资源</title>
+    <style>
+        :root {
+            --primary-color: #4F46E5;
+            --primary-hover: #4338CA;
+            --text-color: #1F2937;
+            --bg-color: #F9FAFB;
+            --card-bg: #FFFFFF;
+            --header-height: 70px;
+            --border-radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), #818CF8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav {
+            margin-left: auto;
+        }
+
+        .nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav a:hover {
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+        }
+
+        .main {
+            margin-top: var(--header-height);
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(129, 140, 248, 0.1));
+            border-radius: var(--border-radius);
+            margin-bottom: 4rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), #818CF8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .exam-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .exam-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .exam-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+        }
+
+        .exam-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .exam-info {
+            margin-bottom: 1.5rem;
+        }
+
+        .exam-info p {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .exam-info p span {
+            font-weight: 500;
+            margin-right: 0.5rem;
+        }
+
+        .exam-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .exam-button:hover {
+            background: var(--primary-hover);
+        }
+
+        .timer-section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .timer-display {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 1.5rem 0;
+        }
+
+        .timer-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .timer-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .start-button {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .start-button:hover {
+            background: var(--primary-hover);
+        }
+
+        .pause-button {
+            background: #EF4444;
+            color: white;
+        }
+
+        .pause-button:hover {
+            background: #DC2626;
+        }
+
+        .reset-button {
+            background: #9CA3AF;
+            color: white;
+        }
+
+        .reset-button:hover {
+            background: #6B7280;
+        }
+
+        .exam-content {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-top: 3rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .question-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .question-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .question-text {
+            margin-bottom: 1.5rem;
+        }
+
+        .options-list {
+            list-style: none;
+        }
+
+        .option-item {
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .option-item:hover {
+            background: rgba(79, 70, 229, 0.05);
+        }
+
+        .option-item.selected {
+            background: rgba(79, 70, 229, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .submit-section {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .submit-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-button:hover {
+            background: var(--primary-hover);
+        }
+
+        .results-section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            display: none;
+        }
+
+        .score-display {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 1.5rem 0;
+        }
+
+        .results-details {
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .result-item {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .result-item.correct {
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .result-item.incorrect {
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .exam-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timer-display {
+                font-size: 2.5rem;
+            }
+
+            .timer-controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>IGCSE 学习资源</h1>
+        <nav class="nav">
+            <a href="index.html">首页</a>
+            <a href="#">课程</a>
+            <a href="#">资源</a>
+            <a href="#">关于</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <h2>模拟考试中心</h2>
+            <p>通过模拟考试检验你的学习成果，提前适应IGCSE考试环境</p>
+        </section>
+
+        <div class="exam-grid">
+            <div class="exam-card">
+                <h3>数学模拟考试</h3>
+                <div class="exam-info">
+                    <p><span>时长:</span> 90分钟</p>
+                    <p><span>题目数量:</span> 50题</p>
+                    <p><span>难度:</span> 中等</p>
+                    <p><span>覆盖内容:</span> 数与代数、几何与三角、统计与概率</p>
+                </div>
+                <a href="#math-exam" class="exam-button">开始考试</a>
+            </div>
+
+            <div class="exam-card">
+                <h3>英语模拟考试</h3>
+                <div class="exam-info">
+                    <p><span>时长:</span> 120分钟</p>
+                    <p><span>题目类型:</span> 阅读理解、写作</p>
+                    <p><span>难度:</span> 中高</p>
+                    <p><span>覆盖内容:</span> 文本分析、写作技巧、语法与词汇</p>
+                </div>
+                <a href="#english-exam" class="exam-button">开始考试</a>
+            </div>
+
+            <div class="exam-card">
+                <h3>科学模拟考试</h3>
+                <div class="exam-info">
+                    <p><span>时长:</span> 105分钟</p>
+                    <p><span>题目数量:</span> 45题</p>
+                    <p><span>难度:</span> 中等</p>
+                    <p><span>覆盖内容:</span> 物理、化学、生物</p>
+                </div>
+                <a href="#science-exam" class="exam-button">开始考试</a>
+            </div>
+        </div>
+
+        <section class="timer-section">
+            <h3>考试计时器</h3>
+            <div class="timer-display" id="timer">00:00:00</div>
+            <p>请在开始考试前设置计时器</p>
+            <div class="timer-controls">
+                <button class="timer-button start-button" id="start-timer">开始</button>
+                <button class="timer-button pause-button" id="pause-timer">暂停</button>
+                <button class="timer-button reset-button" id="reset-timer">重置</button>
+            </div>
+        </section>
+
+        <section class="exam-content" id="math-exam">
+            <h3>数学模拟考试</h3>
+            <!-- 题目将由JavaScript动态生成 -->
+            <div class="submit-section">
+                <button class="submit-button" id="submit-exam">提交答案</button>
+            </div>
+        </section>
+
+        <section class="results-section" id="results">
+            <h3>考试结果</h3>
+            <div class="score-display">85%</div>
+            <p>恭喜你完成了模拟考试！</p>
+            
+            <div class="results-details">
+                <h4>详细分析</h4>
+                <div class="result-item correct">
+                    <p><strong>问题 1:</strong> 正确</p>
+                    <p>你的答案: A. x = -12</p>
+                    <p>正确答案: A. x = -12</p>
+                </div>
+                <div class="result-item correct">
+                    <p><strong>问题 2:</strong> 正确</p>
+                    <p>你的答案: C. x = 45</p>
+                    <p>正确答案: C. x = 45</p>
+                </div>
+                <div class="result-item incorrect">
+                    <p><strong>问题 3:</strong> 错误</p>
+                    <p>你的答案: B. 3x - 2</p>
+                    <p>正确答案: A. 3x - 14</p>
+                    <p>解析: 2(3x - 4) - 3(x + 2) = 6x - 8 - 3x - 6 = 3x - 14</p>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <a href="exam.html" class="exam-button">返回考试列表</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="copyright">© 2025 IGCSE学习资源. 保留所有权利。</p>
+    </footer>
+
+    <script src="math-questions.js"></script>
+    <script>
+        // 计时器功能
+        const timerDisplay = document.getElementById('timer');
+        const startButton = document.getElementById('start-timer');
+        const pauseButton = document.getElementById('pause-timer');
+        const resetButton = document.getElementById('reset-timer');
+        const submitButton = document.getElementById('submit-exam');
+        const examContent = document.getElementById('math-exam');
+        const resultsSection = document.getElementById('results');
+
+        let seconds = 0;
+        let minutes = 0;
+        let hours = 0;
+        let timerInterval;
+        let isRunning = false;
+
+        function updateTimer() {
+            seconds++;
+            if (seconds >= 60) {
+                seconds = 0;
+                minutes++;
+                if (minutes >= 60) {
+                    minutes = 0;
+                    hours++;
+                }
+            }
+
+            timerDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        startButton.addEventListener('click', function() {
+            if (!isRunning) {
+                timerInterval = setInterval(updateTimer, 1000);
+                isRunning = true;
+            }
+        });
+
+        pauseButton.addEventListener('click', function() {
+            clearInterval(timerInterval);
+            isRunning = false;
+        });
+
+        resetButton.addEventListener('click', function() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            seconds = 0;
+            minutes = 0;
+            hours = 0;
+            timerDisplay.textContent = '00:00:00';
+        });
+
+        // 计时器相关功能已保留
+        // 选项选择和提交考试功能已移至math-questions.js中实现
+    </script>
+</body>
+</html>

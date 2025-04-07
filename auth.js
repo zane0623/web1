@@ -4,11 +4,26 @@ const googleConfig = {
     scope: 'email profile'
 };
 
+// 检查客户端ID是否已配置
+function checkClientIdConfig() {
+    if (googleConfig.clientId === 'YOUR_GOOGLE_CLIENT_ID') {
+        console.error('错误：Google客户端ID未配置');
+        alert('Google登录错误：客户端ID未正确配置，请联系管理员');
+        return false;
+    }
+    return true;
+}
+
 // 用户状态管理
 let currentUser = null;
 
 // 初始化Google认证
 function initGoogleAuth() {
+    // 先检查客户端ID是否已配置
+    if (!checkClientIdConfig()) {
+        return;
+    }
+    
     gapi.load('auth2', () => {
         gapi.auth2.init(googleConfig).then(
             (auth2) => {
@@ -18,6 +33,7 @@ function initGoogleAuth() {
             },
             (error) => {
                 console.error('Google Auth initialization error', error);
+                alert('Google登录错误：' + error.error);
             }
         );
     });
@@ -53,6 +69,11 @@ function updateSignInStatus(isSignedIn) {
 
 // 处理登录
 function handleSignIn() {
+    // 先检查客户端ID是否已配置
+    if (!checkClientIdConfig()) {
+        return;
+    }
+    
     const auth2 = gapi.auth2.getAuthInstance();
     auth2.signIn().then(
         (user) => {
@@ -61,6 +82,7 @@ function handleSignIn() {
         },
         (error) => {
             console.error('Sign in error', error);
+            alert('登录失败：' + (error.error || '未知错误'));
         }
     );
 }
