@@ -212,6 +212,39 @@
             background: #6B7280;
         }
 
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--primary-color);
+            width: 100%;
+            transition: width 1s linear;
+        }
+
+        .timer-status {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+
+        .question-progress {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            margin-top: 1rem;
+        }
+
+        .warning {
+            color: #EF4444;
+            font-weight: 500;
+        }
+
         .exam-content {
             background: var(--card-bg);
             border-radius: var(--border-radius);
@@ -222,39 +255,66 @@
         }
 
         .question-section {
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         .question-section h3 {
             color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .question-text {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
 
         .options-list {
             list-style: none;
+            display: grid;
+            gap: 1rem;
         }
 
         .option-item {
-            margin: 1rem 0;
-            padding: 1rem;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            padding: 1.2rem;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
             cursor: pointer;
             transition: var(--transition);
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
         }
 
         .option-item:hover {
             background: rgba(79, 70, 229, 0.05);
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
         }
 
         .option-item.selected {
             background: rgba(79, 70, 229, 0.1);
             border-color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .option-item.selected::before {
+            content: "✓";
+            position: absolute;
+            right: 1.2rem;
+            color: var(--primary-color);
+            font-weight: bold;
         }
 
         .submit-section {
@@ -391,12 +451,11 @@
         <section class="timer-section">
             <h3>考试计时器</h3>
             <div class="timer-display" id="timer">00:00:00</div>
-            <p>请在开始考试前设置计时器</p>
-            <div class="timer-controls">
-                <button class="timer-button start-button" id="start-timer">开始</button>
-                <button class="timer-button pause-button" id="pause-timer">暂停</button>
-                <button class="timer-button reset-button" id="reset-timer">重置</button>
+            <p class="timer-status">剩余时间</p>
+            <div class="progress-bar">
+                <div class="progress" id="time-progress"></div>
             </div>
+            <p class="question-progress">答题进度：<span id="answered-count">0</span>/<span id="total-questions">10</span></p>
         </section>
 
         <section class="exam-content" id="math-exam">

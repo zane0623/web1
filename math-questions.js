@@ -258,11 +258,53 @@ document.addEventListener('DOMContentLoaded', function() {
     const examContent = document.getElementById('math-exam');
     const submitButton = document.getElementById('submit-exam');
     const resultsSection = document.getElementById('results');
+    const timerDisplay = document.getElementById('timer');
+    const timeProgress = document.getElementById('time-progress');
+    const answeredCount = document.getElementById('answered-count');
+    const totalQuestions = document.getElementById('total-questions');
     
     // 只有在考试页面存在时才执行
     if (examContent) {
-        // 获取3道随机题目
-        const randomQuestions = getRandomQuestions(3);
+        // 获取10道随机题目
+        const randomQuestions = getRandomQuestions(10);
+        
+        // 设置考试时间限制（90分钟）
+        let timeLimit = 90 * 60; // 90分钟转换为秒
+        
+        // 更新计时器显示
+        function updateTimerDisplay(remainingTime) {
+            const hours = Math.floor(remainingTime / 3600);
+            const minutes = Math.floor((remainingTime % 3600) / 60);
+            const seconds = remainingTime % 60;
+            timerDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // 更新进度条
+            const progressPercentage = (remainingTime / (90 * 60)) * 100;
+            timeProgress.style.width = `${progressPercentage}%`;
+            
+            // 时间不足15分钟时显示警告
+            const timerStatus = document.querySelector('.timer-status');
+            if (remainingTime <= 900) { // 15分钟 = 900秒
+                timerStatus.textContent = '注意：考试时间不足15分钟';
+                timerStatus.classList.add('warning');
+            }
+            
+            // 时间到自动提交
+            if (remainingTime <= 0) {
+                clearInterval(timerInterval);
+                submitButton.click();
+                alert('考试时间已到！');
+            }
+        }
+        
+        // 开始计时
+        let timerInterval = setInterval(() => {
+            timeLimit--;
+            updateTimerDisplay(timeLimit);
+        }, 1000);
+        
+        // 初始显示
+        updateTimerDisplay(timeLimit);
         
         // 生成HTML并插入到页面
         const questionsContainer = document.createElement('div');
@@ -291,6 +333,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 // 添加当前选项的选中状态
                 this.classList.add('selected');
+                
+                // 更新答题进度
+                const answeredQuestions = document.querySelectorAll('.option-item.selected').length;
+                answeredCount.textContent = answeredQuestions;
             });
         });
         
